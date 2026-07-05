@@ -24,14 +24,14 @@
                             200: '#eedfb8',
                             300: '#e2ca8b',
                             400: '#d5b360',
-                            500: '#c29d44', // Основное благородное золото
+                            500: '#c29d44', 
                             600: '#a38133',
                             700: '#7e6124',
                         },
                         luxury: {
                             white: '#ffffff',
-                            cream: '#faf8f5', // Нежный кремовый фон
-                            dark: '#1c1710',  // Мягкий черный для текста с золотым отливом
+                            cream: '#faf8f5', 
+                            dark: '#14110c',  
                             sand: '#f2eae1'
                         }
                     },
@@ -51,11 +51,10 @@
             scroll-behavior: smooth;
         }
         
-        /* Плавное проявление элегантных блоков */
         .fade-in-section {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1.2s cubic-bezier(0.215, 0.610, 0.355, 1), transform 1.2s cubic-bezier(0.215, 0.610, 0.355, 1);
+            transform: translateY(40px);
+            transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
         .fade-in-section.is-visible {
@@ -63,50 +62,66 @@
             transform: translateY(0);
         }
 
-        /* Тонкие золотые градиенты для эффекта блеска */
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #b08d36 0%, #f7e0a3 50%, #c29d44 100%);
-            -webkit-background-clip: text;
-            background-clip: text; 
-            -webkit-text-fill-color: transparent;
+        /* Главный экран */
+        #hero-section {
+            position: relative;
+            overflow: hidden;
+            background-color: #14110c;
         }
 
-        .gold-gradient-bg {
-            background: linear-gradient(135deg, #c29d44 0%, #eedfb8 50%, #a38133 100%);
+        .hero-bg-wrapper {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background-image: 
+                linear-gradient(to bottom, rgba(20, 17, 12, 0.4) 0%, rgba(20, 17, 12, 0.75) 100%), 
+                url('https://images.unsplash.com/photo-1607511046777-66440cb3298e?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 45%;
+            will-change: transform;
+            z-index: 1;
         }
 
-        .gold-border-glow {
-            border: 1px solid transparent;
-            border-image: linear-gradient(135deg, #c29d44, #f7e0a3) 1;
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
         }
 
-        /* Премиальный тонкий скроллбар */
+        /* Тонкий благородный скроллбар */
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: #faf8f5;
+            background: #14110c;
         }
         ::-webkit-scrollbar-thumb {
-            background: #c29d44;
-            border-radius: 3px;
+            background: linear-gradient(#c29d44, #7e6124);
+            border-radius: 10px;
         }
     </style>
 </head>
 <body class="bg-luxury-cream font-sans text-luxury-dark leading-relaxed overflow-x-hidden">
 
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-6 px-8 flex justify-between items-center bg-transparent">
-        <a href="#" class="font-cinzel text-xl tracking-[0.3em] font-medium transition-colors duration-500 text-white" id="nav-logo">A & E</a>
+    <!-- Навигация -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-700 py-6 px-8 flex justify-between items-center bg-transparent">
+        <a href="#" class="font-cinzel text-xl tracking-[0.4em] font-medium transition-colors duration-500 text-white" id="nav-logo">A & E</a>
         
         <button id="menu-btn" class="md:hidden text-white focus:outline-none z-50 transition-colors">
             <i class="fa-solid fa-bars-staggered text-xl" id="menu-icon"></i>
         </button>
 
-        <ul id="nav-links" class="hidden md:flex space-x-10 font-sans text-[10px] tracking-[0.4em] uppercase text-white font-light">
-            <li><a href="#about" class="hover:text-gold-300 transition-colors duration-300">Наша история</a></li>
-            <li><a href="#schedule" class="hover:text-gold-300 transition-colors duration-300">Программа</a></li>
-            <li><a href="#details" class="hover:text-gold-300 transition-colors duration-300">Детали</a></li>
-            <li><a href="#rsvp" class="hover:text-gold-300 transition-colors duration-300">RSVP</a></li>
+        <ul id="nav-links" class="hidden md:flex space-x-12 font-sans text-[10px] tracking-[0.5em] uppercase text-white/90 font-light">
+            <li><a href="#about" class="hover:text-gold-300 transition-colors duration-300 relative after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[1px] after:bg-gold-300 hover:after:w-full after:transition-all after:duration-300">Наша история</a></li>
+            <li><a href="#schedule" class="hover:text-gold-300 transition-colors duration-300 relative after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[1px] after:bg-gold-300 hover:after:w-full after:transition-all after:duration-300">Программа</a></li>
+            <li><a href="#details" class="hover:text-gold-300 transition-colors duration-300 relative after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[1px] after:bg-gold-300 hover:after:w-full after:transition-all after:duration-300">Детали</a></li>
+            <li><a href="#rsvp" class="hover:text-gold-300 transition-colors duration-300 relative after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-[1px] after:bg-gold-300 hover:after:w-full after:transition-all after:duration-300">RSVP</a></li>
         </ul>
 
         <div id="mobile-menu" class="fixed inset-0 bg-luxury-dark bg-opacity-98 z-40 flex flex-col justify-center items-center space-y-10 transform translate-x-full transition-transform duration-500 ease-in-out">
@@ -119,182 +134,288 @@
         </div>
     </nav>
 
-    <section class="relative h-screen flex items-center justify-center bg-cover bg-center bg-fixed" style="background-image: linear-gradient(rgba(24, 20, 15, 0.5), rgba(24, 20, 15, 0.5)), url('http://googleusercontent.com/image_collection/image_retrieval/10755680290865288171_0');">
-        <div class="absolute inset-0 border-[16px] md:border-[24px] border-luxury-dark border-opacity-20 pointer-events-none z-10"></div>
-        <div class="absolute inset-4 md:inset-6 border border-gold-300 border-opacity-30 pointer-events-none z-10"></div>
+    <!-- Главный экран -->
+    <section id="hero-section" class="relative h-screen flex items-center justify-center">
+        <div class="hero-bg-wrapper" id="hero-bg"></div>
 
-        <div class="text-center text-white px-4 z-20">
-            <span class="block font-script text-6xl md:text-8xl text-gold-200 mb-6 drop-shadow-md">Save the Date</span>
-            <h1 class="font-cinzel text-3xl md:text-6xl tracking-[0.25em] font-light mb-8">Александр <br class="md:hidden"><span class="font-script text-4xl md:text-6xl lowercase text-gold-200 tracking-normal mx-2">and</span> Елизавета</h1>
-            <div class="w-24 h-[1px] bg-gold-300 mx-auto mb-8"></div>
-            <p class="font-sans text-xs md:text-sm tracking-[0.4em] uppercase text-gold-100 mb-12">12 сентября 2026 • Начало в 15:30</p>
+        <!-- Тонкая рамка -->
+        <div class="absolute inset-4 md:inset-8 border border-gold-300 border-opacity-20 pointer-events-none z-10"></div>
+        <div class="absolute inset-5 md:inset-10 border border-white border-opacity-5 pointer-events-none z-10"></div>
+
+        <!-- Золотая пыльца -->
+        <canvas id="particles-canvas"></canvas>
+
+        <div class="text-center text-white px-4 z-20 relative select-none flex flex-col items-center">
             
-            <a href="#rsvp" class="inline-block border border-gold-300 bg-transparent hover:bg-gold-500 hover:border-gold-500 hover:text-luxury-dark text-gold-200 font-sans text-[11px] tracking-[0.3em] uppercase py-4 px-10 rounded-none transition-all duration-500 backdrop-blur-sm shadow-lg">
+            <!-- Векторная премиум-иллюстрация колец и цветов (SVG) -->
+            <div class="w-40 md:w-52 mb-4 drop-shadow-[0_0_30px_rgba(226,202,139,0.35)] animate-[pulse_4s_infinite_ease-in-out]">
+                <svg viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+                    <!-- Градиенты для золотых колец -->
+                    <defs>
+                        <linearGradient id="goldGrad1" x1="120" y1="120" x2="280" y2="280" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#fff2cc"/>
+                            <stop offset="30%" stop-color="#e2ca8b"/>
+                            <stop offset="50%" stop-color="#8a6f27"/>
+                            <stop offset="70%" stop-color="#e2ca8b"/>
+                            <stop offset="100%" stop-color="#735a18"/>
+                        </linearGradient>
+                        <linearGradient id="goldGrad2" x1="160" y1="160" x2="320" y2="320" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="25%" stop-color="#eedfb8"/>
+                            <stop offset="50%" stop-color="#b89336"/>
+                            <stop offset="75%" stop-color="#e2ca8b"/>
+                            <stop offset="100%" stop-color="#594411"/>
+                        </linearGradient>
+                        <!-- Мягкие тени для объема листьев -->
+                        <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+                            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.5"/>
+                        </filter>
+                    </defs>
+
+                    <!-- Задний план: Зеленые листья -->
+                    <g filter="url(#softShadow)">
+                        <!-- Левый лист -->
+                        <path d="M150 160 C110 130, 90 170, 80 200 C110 210, 140 190, 150 160 Z" fill="#2d4a27"/>
+                        <path d="M150 160 Q115 175, 80 200" stroke="#466d3c" stroke-width="1.5"/>
+                        <!-- Верхний лист -->
+                        <path d="M200 110 C180 60, 220 50, 240 40 C250 80, 230 100, 200 110 Z" fill="#223e1c"/>
+                        <!-- Правый лист -->
+                        <path d="M260 150 C310 130, 330 170, 340 210 C300 210, 270 180, 260 150 Z" fill="#35542f"/>
+                        <path d="M260 150 Q300 175, 340 210" stroke="#4e7547" stroke-width="1.5"/>
+                    </g>
+
+                    <!-- Бутоны и розы на заднем плане -->
+                    <!-- Белая большая роза -->
+                    <g filter="url(#softShadow)">
+                        <circle cx="210" cy="115" r="50" fill="#fcf8f0"/>
+                        <!-- Лепестки большой розы -->
+                        <path d="M180 95 C190 80, 230 80, 240 95 C230 110, 190 110, 180 95 Z" fill="#f5ebe0" stroke="#e0d0c0" stroke-width="0.5"/>
+                        <path d="M165 115 C170 90, 210 90, 215 115 C200 135, 175 135, 165 115 Z" fill="#faeedf"/>
+                        <path d="M210 115 C220 95, 255 100, 255 120 C240 140, 220 135, 210 115 Z" fill="#ebdcd0"/>
+                        <!-- Центр розы -->
+                        <circle cx="210" cy="110" r="15" fill="#e3cbbe"/>
+                        <circle cx="210" cy="110" r="8" fill="#ceb2a2"/>
+                    </g>
+
+                    <!-- Розовая роза слева -->
+                    <g filter="url(#softShadow)">
+                        <circle cx="155" cy="170" r="38" fill="#f5b5c5"/>
+                        <!-- Лепестки -->
+                        <path d="M130 160 C140 140, 170 140, 175 160 C165 175, 140 175, 130 160 Z" fill="#f099b0"/>
+                        <path d="M140 180 C145 160, 175 160, 175 185 C160 200, 145 195, 140 180 Z" fill="#e07e99"/>
+                        <circle cx="155" cy="170" r="10" fill="#c95a78"/>
+                    </g>
+
+                    <!-- Маленькая ромашка внизу слева -->
+                    <g filter="url(#softShadow)">
+                        <circle cx="120" cy="225" r="10" fill="#ffffff"/>
+                        <!-- Лепестки по кругу -->
+                        <ellipse cx="120" cy="208" rx="4" ry="10" fill="#ffffff"/>
+                        <ellipse cx="120" cy="242" rx="4" ry="10" fill="#ffffff"/>
+                        <ellipse cx="103" cy="225" rx="10" ry="4" fill="#ffffff"/>
+                        <ellipse cx="137" cy="225" rx="10" ry="4" fill="#ffffff"/>
+                        <ellipse cx="110" cy="214" rx="8" ry="8" fill="#ffffff" transform="rotate(45 110 214)"/>
+                        <ellipse cx="130" cy="236" rx="8" ry="8" fill="#ffffff" transform="rotate(45 130 236)"/>
+                        <!-- Желтая сердцевина -->
+                        <circle cx="120" cy="225" r="7" fill="#fab127"/>
+                    </g>
+
+                    <!-- ПЕРЕДНИЙ ПЛАН: Два переплетенных объемных золотых кольца -->
+                    <!-- Левое кольцо (основа) -->
+                    <g filter="url(#softShadow)">
+                        <ellipse cx="195" cy="235" rx="65" ry="45" stroke="url(#goldGrad1)" stroke-width="18" fill="none" transform="rotate(-15 195 235)"/>
+                        <ellipse cx="195" cy="235" rx="65" ry="45" stroke="#ffffff" stroke-width="1.5" fill="none" stroke-opacity="0.6" transform="rotate(-15 195 235)"/>
+                    </g>
+
+                    <!-- Правое кольцо (ложится поверх левого и переплетается) -->
+                    <g filter="url(#softShadow)">
+                        <ellipse cx="265" cy="215" rx="55" ry="50" stroke="url(#goldGrad2)" stroke-width="16" fill="none" transform="rotate(25 265 215)"/>
+                        <ellipse cx="265" cy="215" rx="55" ry="50" stroke="#ffffff" stroke-width="2" fill="none" stroke-opacity="0.7" transform="rotate(25 265 215)"/>
+                    </g>
+                    
+                    <!-- Тонкая перемычка левого кольца, выходящая на передний план для эффекта 3D переплетения -->
+                    <path d="M 215 192 A 65 45 0 0 1 245 215" stroke="url(#goldGrad1)" stroke-width="18" fill="none" transform="rotate(-15 195 235)" />
+                </svg>
+            </div>
+
+            <span class="block font-script text-7xl md:text-9xl text-gold-200 mb-4 drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]">Save the Date</span>
+            <h1 class="font-cinzel text-3xl md:text-6xl tracking-[0.3em] font-light mb-8 uppercase drop-shadow-md">
+                Александр <br class="md:hidden"><span class="font-script text-4xl md:text-6xl lowercase text-gold-200 tracking-normal mx-3 relative top-[-4px]">and</span> Елизавета
+            </h1>
+            <div class="w-20 h-[1px] bg-gradient-to-r from-transparent via-gold-300/60 to-transparent mx-auto mb-8"></div>
+            <p class="font-sans text-[10px] md:text-xs tracking-[0.5em] uppercase text-gold-100/90 mb-14">12 сентября 2026 • Начало в 15:30</p>
+            
+            <a href="#rsvp" class="inline-block border border-gold-300/40 bg-transparent hover:bg-gold-500 hover:border-gold-500 hover:text-luxury-dark text-gold-200 font-sans text-[10px] tracking-[0.4em] uppercase py-4 px-12 rounded-none transition-all duration-700 backdrop-blur-md shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:scale-105 transform">
                 Подтвердить присутствие
             </a>
         </div>
         
-        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-gold-200 text-opacity-80 z-20 animate-pulse">
+        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-gold-200/60 z-20 animate-bounce">
             <a href="#about" class="flex flex-col items-center">
-                <i class="fa-solid fa-chevron-down font-light text-sm tracking-widest"></i>
+                <i class="fa-solid fa-chevron-down font-light text-xs tracking-widest"></i>
             </a>
         </div>
     </section>
 
-    <section class="py-16 bg-luxury-white border-b border-gold-100 relative">
+    <!-- Таймер -->
+    <section class="py-20 bg-luxury-white border-b border-gold-100/40 relative z-20 shadow-sm">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <span class="block font-serif italic text-lg text-gold-600 mb-4">До торжества осталось</span>
-            <div class="flex justify-center items-center space-x-3 md:space-x-8">
-                <div class="bg-luxury-cream p-4 md:p-6 w-24 md:w-32 border border-gold-200 border-opacity-40">
-                    <span id="days" class="block font-cinzel text-2xl md:text-4xl text-luxury-dark font-light">00</span>
-                    <span class="text-[9px] tracking-[0.2em] uppercase text-gray-400 mt-1 block">Дней</span>
+            <span class="block font-serif italic text-xl text-gold-600 mb-6">До торжества осталось</span>
+            <div class="flex justify-center items-center space-x-4 md:space-x-10">
+                <div class="bg-luxury-cream/50 p-5 md:p-8 w-24 md:w-36 border border-gold-200/30 shadow-2xl backdrop-blur-sm">
+                    <span id="days" class="block font-cinzel text-2xl md:text-5xl text-luxury-dark font-light tracking-wide">00</span>
+                    <span class="text-[8px] tracking-[0.25em] uppercase text-gray-400 mt-2 block">Дней</span>
                 </div>
-                <div class="bg-luxury-cream p-4 md:p-6 w-24 md:w-32 border border-gold-200 border-opacity-40">
-                    <span id="hours" class="block font-cinzel text-2xl md:text-4xl text-luxury-dark font-light">00</span>
-                    <span class="text-[9px] tracking-[0.2em] uppercase text-gray-400 mt-1 block">Часов</span>
+                <div class="bg-luxury-cream/50 p-5 md:p-8 w-24 md:w-36 border border-gold-200/30 shadow-2xl backdrop-blur-sm">
+                    <span id="hours" class="block font-cinzel text-2xl md:text-5xl text-luxury-dark font-light tracking-wide">00</span>
+                    <span class="text-[8px] tracking-[0.25em] uppercase text-gray-400 mt-2 block">Часов</span>
                 </div>
-                <div class="bg-luxury-cream p-4 md:p-6 w-24 md:w-32 border border-gold-200 border-opacity-40">
-                    <span id="minutes" class="block font-cinzel text-2xl md:text-4xl text-luxury-dark font-light">00</span>
-                    <span class="text-[9px] tracking-[0.2em] uppercase text-gray-400 mt-1 block">Минут</span>
+                <div class="bg-luxury-cream/50 p-5 md:p-8 w-24 md:w-36 border border-gold-200/30 shadow-2xl backdrop-blur-sm">
+                    <span id="minutes" class="block font-cinzel text-2xl md:text-5xl text-luxury-dark font-light tracking-wide">00</span>
+                    <span class="text-[8px] tracking-[0.25em] uppercase text-gray-400 mt-2 block">Минут</span>
                 </div>
-                <div class="bg-luxury-cream p-4 md:p-6 w-24 md:w-32 border border-gold-200 border-opacity-40">
-                    <span id="seconds" class="block font-cinzel text-2xl md:text-4xl text-luxury-dark font-light">00</span>
-                    <span class="text-[9px] tracking-[0.2em] uppercase text-gray-400 mt-1 block">Секунд</span>
+                <div class="bg-luxury-cream/50 p-5 md:p-8 w-24 md:w-36 border border-gold-200/30 shadow-2xl backdrop-blur-sm">
+                    <span id="seconds" class="block font-cinzel text-2xl md:text-5xl text-luxury-dark font-light tracking-wide">00</span>
+                    <span class="text-[8px] tracking-[0.25em] uppercase text-gray-400 mt-2 block">Секунд</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-32 fade-in-section max-w-5xl mx-auto px-6">
-        <div class="grid md:grid-cols-12 gap-12 items-center">
+    <!-- История -->
+    <section id="about" class="py-36 fade-in-section max-w-5xl mx-auto px-6">
+        <div class="grid md:grid-cols-12 gap-16 items-center">
             <div class="md:col-span-5 order-2 md:order-1 relative flex justify-center items-center">
                 <div class="relative w-full max-w-[360px] aspect-[4/5] p-3">
-                    <div class="absolute inset-0 border border-gold-400 transform translate-x-3 translate-y-3 pointer-events-none"></div>
-                    <div class="absolute inset-0 bg-white shadow-xl overflow-hidden p-0">
-                        <img src="https://i.pinimg.com/474x/85/32/a9/8532a90c91dc7bbb1d44111b0f7d621a.jpg?nii=t" alt="История любви" class="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-700 ease-in-out">
+                    <div class="absolute inset-0 border border-gold-400/60 transform translate-x-4 translate-y-4 pointer-events-none transition-transform duration-700"></div>
+                    <div class="absolute inset-0 bg-white shadow-2xl overflow-hidden p-0">
+                        <img src="https://i.pinimg.com/474x/85/32/a9/8532a90c91dc7bbb1d44111b0f7d621a.jpg?nii=t" alt="История любви" class="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-1000 ease-out hover:scale-105">
                     </div>
                 </div>
             </div>
             
             <div class="md:col-span-7 order-1 md:order-2 space-y-6 md:pl-8">
-                <span class="block font-script text-5xl text-gold-500">The Story of Us</span>
-                <h2 class="font-cinzel text-2xl md:text-4xl tracking-wider font-light">Как всё начиналось</h2>
-                <div class="w-20 h-[1px] bg-gold-400"></div>
-                <p class="font-serif text-lg font-light text-gray-600 italic leading-relaxed">
+                <span class="block font-script text-6xl text-gold-500">The Story of Us</span>
+                <h2 class="font-cinzel text-2xl md:text-4xl tracking-wider font-light text-luxury-dark">Как всё начиналось</h2>
+                <div class="w-16 h-[1px] bg-gold-400"></div>
+                <p class="font-serif text-xl font-light text-gray-600 italic leading-relaxed">
                     Наша история началась теплым осенним вечером. Казалось бы, обычная встреча в кофейне переросла в многочасовые прогулки и бесконечные разговоры под звездами. С тех пор мы не расставались ни на один день.
                 </p>
-                <p class="font-sans text-xs font-light text-gray-500 tracking-wide leading-relaxed">
+                <p class="font-sans text-xs font-light text-gray-500 tracking-widest leading-relaxed">
                     Спустя три года, в самом сердце заснеженных гор, прозвучало самое заветное «Да!». И сегодня мы невероятно счастливы пригласить вас разделить с нами начало нашего нового совместного путешествия длиною в жизнь.
                 </p>
-                <div class="pt-6 font-script text-4xl text-gold-600">
+                <div class="pt-6 font-script text-5xl text-gold-600/90">
                     Александр & Елизавета
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="schedule" class="py-32 bg-luxury-white border-t border-b border-gold-100 fade-in-section">
+    <!-- Программа дня -->
+    <section id="schedule" class="py-36 bg-luxury-white border-t border-b border-gold-100/30 fade-in-section shadow-inner">
         <div class="max-w-4xl mx-auto px-4">
-            <div class="text-center space-y-4 mb-20">
-                <span class="block font-script text-5xl text-gold-500">Wedding Timeline</span>
-                <h2 class="font-cinzel text-2xl md:text-3xl tracking-[0.2em] font-light uppercase">Программа дня</h2>
-                <div class="w-16 h-[1px] bg-gold-400 mx-auto"></div>
+            <div class="text-center space-y-4 mb-24">
+                <span class="block font-script text-6xl text-gold-500">Wedding Timeline</span>
+                <h2 class="font-cinzel text-2xl md:text-3xl tracking-[0.25em] font-light uppercase text-luxury-dark">Программа дня</h2>
+                <div class="w-12 h-[1px] bg-gold-400 mx-auto"></div>
             </div>
 
-            <div class="relative border-l border-gold-300 mx-auto max-w-xl pl-10 space-y-16">
-                <div class="relative">
-                    <div class="absolute -left-[46px] top-1 w-3 h-3 rounded-full bg-gold-500 ring-4 ring-luxury-white"></div>
-                    <span class="block font-cinzel text-gold-600 text-sm tracking-widest font-semibold">15:30</span>
+            <div class="relative border-l border-gold-300/40 mx-auto max-w-xl pl-12 space-y-20">
+                <div class="relative group">
+                    <div class="absolute -left-[53px] top-1.5 w-2.5 h-2.5 rounded-full bg-gold-500 ring-4 ring-luxury-white transition-transform duration-500 group-hover:scale-125"></div>
+                    <span class="block font-cinzel text-gold-600 text-xs tracking-[0.2em] font-semibold">15:30</span>
                     <h3 class="font-serif text-2xl font-light tracking-wide mt-1 text-luxury-dark">Сбор гостей</h3>
-                    <p class="font-sans text-xs font-light text-gray-500 mt-2 tracking-wide">Приветственные изысканные коктейли, легкая живая музыка и атмосфера предвкушения праздника.</p>
+                    <p class="font-sans text-xs font-light text-gray-500 mt-2 tracking-widest leading-relaxed">Приветственные изысканные коктейли, легкая живая музыка и атмосфера предвкушения праздника.</p>
                 </div>
 
-                <div class="relative">
-                    <div class="absolute -left-[46px] top-1 w-3 h-3 rounded-full bg-gold-500 ring-4 ring-luxury-white"></div>
-                    <span class="block font-cinzel text-gold-600 text-sm tracking-widest font-semibold">16:00</span>
+                <div class="relative group">
+                    <div class="absolute -left-[53px] top-1.5 w-2.5 h-2.5 rounded-full bg-gold-500 ring-4 ring-luxury-white transition-transform duration-500 group-hover:scale-125"></div>
+                    <span class="block font-cinzel text-gold-600 text-xs tracking-[0.2em] font-semibold">16:00</span>
                     <h3 class="font-serif text-2xl font-light tracking-wide mt-1 text-luxury-dark">Выездная церемония</h3>
-                    <p class="font-sans text-xs font-light text-gray-500 mt-2 tracking-wide">Самый важный и трогательный момент нашего дня. Обмен клятвами верности на берегу живописного озера.</p>
+                    <p class="font-sans text-xs font-light text-gray-500 mt-2 tracking-widest leading-relaxed">Самый важный и трогательный момент нашего дня. Обмен клятвами верности на берегу живописного озера.</p>
                 </div>
 
-                <div class="relative">
-                    <div class="absolute -left-[46px] top-1 w-3 h-3 rounded-full bg-gold-500 ring-4 ring-luxury-white"></div>
-                    <span class="block font-cinzel text-gold-600 text-sm tracking-widest font-semibold">17:00</span>
+                <div class="relative group">
+                    <div class="absolute -left-[53px] top-1.5 w-2.5 h-2.5 rounded-full bg-gold-500 ring-4 ring-luxury-white transition-transform duration-500 group-hover:scale-125"></div>
+                    <span class="block font-cinzel text-gold-600 text-xs tracking-[0.2em] font-semibold">17:00</span>
                     <h3 class="font-serif text-2xl font-light tracking-wide mt-1 text-luxury-dark">Гранд-ужин</h3>
-                    <p class="font-sans text-xs font-light text-gray-500 mt-2 tracking-wide">Высокая кухня, искренние поздравления близких, первый танец и начало роскошного вечера.</p>
+                    <p class="font-sans text-xs font-light text-gray-500 mt-2 tracking-widest leading-relaxed">Высокая кухня, искренние поздравления близких, первый танец и начало роскошного вечера.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="details" class="py-32 fade-in-section max-w-6xl mx-auto px-6">
-        <div class="text-center space-y-4 mb-20">
-            <span class="block font-script text-5xl text-gold-500">Wedding Details</span>
-            <h2 class="font-cinzel text-2xl md:text-3xl tracking-[0.2em] font-light uppercase">Детали торжества</h2>
-            <div class="w-16 h-[1px] bg-gold-400 mx-auto"></div>
+    <!-- Детали торжества -->
+    <section id="details" class="py-36 fade-in-section max-w-6xl mx-auto px-6">
+        <div class="text-center space-y-4 mb-24">
+            <span class="block font-script text-6xl text-gold-500">Wedding Details</span>
+            <h2 class="font-cinzel text-2xl md:text-3xl tracking-[0.25em] font-light uppercase text-luxury-dark">Детали торжества</h2>
+            <div class="w-12 h-[1px] bg-gold-400 mx-auto"></div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-luxury-white p-10 border border-gold-200 border-opacity-40 text-center space-y-5 shadow-sm">
-                <div class="text-gold-500 text-2xl font-light"><i class="fa-solid fa-gem"></i></div>
-                <h3 class="font-cinzel text-lg tracking-widest font-light">Дресс-код</h3>
-                <p class="font-sans text-xs font-light text-gray-500 tracking-wide leading-relaxed">Мы будем признательны, если вы разделите элегантную палитру нашего праздника в светлых и пастельных тонах:</p>
-                <div class="flex justify-center space-x-3 pt-2">
-                    <span class="w-5 h-5 rounded-full bg-[#fcfaf5] border border-gold-200 block shadow-inner"></span>
-                    <span class="w-5 h-5 rounded-full bg-[#f4ebd9] border border-gold-200 block shadow-inner"></span>
-                    <span class="w-5 h-5 rounded-full bg-[#eedfb8] border border-gold-200 block shadow-inner"></span>
-                    <span class="w-5 h-5 rounded-full bg-[#dfd6c6] border border-gold-200 block shadow-inner"></span>
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="bg-luxury-white p-12 border border-gold-200/30 text-center space-y-6 shadow-xl backdrop-blur-sm hover:translate-y-[-5px] transition-all duration-500">
+                <div class="text-gold-500 text-xl font-light"><i class="fa-solid fa-gem"></i></div>
+                <h3 class="font-cinzel text-md tracking-[0.2em] font-light text-luxury-dark uppercase">Дресс-код</h3>
+                <p class="font-sans text-xs font-light text-gray-500 tracking-widest leading-relaxed">Мы будем признательны, если вы разделите элегантную палитру нашего праздника в светлых и пастельных тонах:</p>
+                <div class="flex justify-center space-x-4 pt-2">
+                    <span class="w-5 h-5 rounded-full bg-[#fcfaf5] border border-gold-200/40 block shadow-inner"></span>
+                    <span class="w-5 h-5 rounded-full bg-[#f4ebd9] border border-gold-200/40 block shadow-inner"></span>
+                    <span class="w-5 h-5 rounded-full bg-[#eedfb8] border border-gold-200/40 block shadow-inner"></span>
+                    <span class="w-5 h-5 rounded-full bg-[#dfd6c6] border border-gold-200/40 block shadow-inner"></span>
                 </div>
             </div>
 
-            <div class="bg-luxury-white p-10 border border-gold-200 border-opacity-40 text-center space-y-5 shadow-sm">
-                <div class="text-gold-500 text-2xl font-light"><i class="fa-solid fa-envelope-open-text"></i></div>
-                <h3 class="font-cinzel text-lg tracking-widest font-light">Пожелания</h3>
-                <p class="font-sans text-xs font-light text-gray-500 tracking-wide leading-relaxed">Главное для нас — ваше присутствие. Но если вы захотите сделать подарок, мы будем рады вашим пожеланиям в элегантных конвертах.</p>
+            <div class="bg-luxury-white p-12 border border-gold-200/30 text-center space-y-6 shadow-xl backdrop-blur-sm hover:translate-y-[-5px] transition-all duration-500">
+                <div class="text-gold-500 text-xl font-light"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <h3 class="font-cinzel text-md tracking-[0.2em] font-light text-luxury-dark uppercase">Пожелания</h3>
+                <p class="font-sans text-xs font-light text-gray-500 tracking-widest leading-relaxed">Главное для нас — ваше присутствие. Но если вы захотите сделать подарок, мы будем рады вашим пожеланиям в элегантных конвертах.</p>
             </div>
 
-            <div class="bg-luxury-white p-10 border border-gold-200 border-opacity-40 text-center space-y-5 shadow-sm">
-                <div class="text-gold-500 text-2xl font-light"><i class="fa-solid fa-map-pin"></i></div>
-                <h3 class="font-cinzel text-lg tracking-widest font-light">Локация</h3>
-                <p class="font-sans text-xs font-light text-gray-500 tracking-wide leading-relaxed">Праздник состоится в премиальном загородном комплексе «Усадьба у озера». Для вашего комфорта будет организован трансфер.</p>
+            <div class="bg-luxury-white p-12 border border-gold-200/30 text-center space-y-6 shadow-xl backdrop-blur-sm hover:translate-y-[-5px] transition-all duration-500">
+                <div class="text-gold-500 text-xl font-light"><i class="fa-solid fa-map-pin"></i></div>
+                <h3 class="font-cinzel text-md tracking-[0.2em] font-light text-luxury-dark uppercase">Локация</h3>
+                <p class="font-sans text-xs font-light text-gray-500 tracking-widest leading-relaxed">Праздник состоится в премиальном загородном комплексе «Усадьба у озера». Для вашего комфорта будет организован трансфер.</p>
             </div>
         </div>
     </section>
 
-    <section id="rsvp" class="py-32 bg-luxury-white border-t border-gold-200 border-opacity-50 fade-in-section">
+    <!-- RSVP -->
+    <section id="rsvp" class="py-36 bg-luxury-white border-t border-gold-200/40 fade-in-section shadow-inner">
         <div class="max-w-2xl mx-auto px-4">
-            <div class="bg-luxury-cream p-8 md:p-16 border border-gold-300 border-opacity-60 shadow-xl relative">
-                <div class="absolute inset-2 border border-gold-200 border-opacity-30 pointer-events-none"></div>
+            <div class="bg-luxury-cream p-10 md:p-20 border border-gold-300/40 shadow-2xl relative">
+                <div class="absolute inset-3 border border-gold-200/20 pointer-events-none"></div>
                 
-                <div class="text-center space-y-4 mb-10 relative z-10">
-                    <span class="block font-script text-5xl text-gold-500">RSVP</span>
-                    <h2 class="font-cinzel text-2xl md:text-3xl tracking-[0.15em] font-light text-luxury-dark uppercase">Регистрация гостей</h2>
-                    <div class="w-16 h-[1px] bg-gold-400 mx-auto"></div>
+                <div class="text-center space-y-4 mb-14 relative z-10">
+                    <span class="block font-script text-6xl text-gold-500">RSVP</span>
+                    <h2 class="font-cinzel text-2xl md:text-3xl tracking-[0.2em] font-light text-luxury-dark uppercase">Регистрация гостей</h2>
+                    <div class="w-12 h-[1px] bg-gold-400 mx-auto"></div>
                 </div>
 
-                <form id="rsvp-form" class="space-y-8 relative z-10">
+                <form id="rsvp-form" class="space-y-10 relative z-10">
                     <div>
-                        <label for="name" class="block text-[10px] font-medium tracking-[0.2em] text-gray-400 uppercase mb-2">Ваше Имя и Фамилия</label>
-                        <input type="text" id="name" required class="w-full bg-transparent border-b border-gold-300 focus:border-gold-600 outline-none py-3 text-sm transition-colors text-luxury-dark placeholder-gray-300 font-light" placeholder="Анастасия">
+                        <label for="name" class="block text-[9px] font-medium tracking-[0.25em] text-gray-400 uppercase mb-2">Ваше Имя и Фамилия</label>
+                        <input type="text" id="name" required class="w-full bg-transparent border-b border-gold-300/60 focus:border-gold-600 outline-none py-3 text-sm transition-colors text-luxury-dark placeholder-gray-300 font-light" placeholder="Анастасия">
                     </div>
 
                     <div>
-                        <label class="block text-[10px] font-medium tracking-[0.2em] text-gray-400 uppercase mb-4">Планируете ли вы присутствовать?</label>
-                        <div class="flex space-x-8">
+                        <label class="block text-[9px] font-medium tracking-[0.25em] text-gray-400 uppercase mb-4">Планируете ли вы присутствовать?</label>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-12">
                             <label class="flex items-center space-x-3 cursor-pointer group">
                                 <input type="radio" name="presence" value="yes" checked class="w-4 h-4 accent-gold-500">
-                                <span class="text-xs font-light text-gray-600 tracking-wide group-hover:text-gold-600 transition-colors">Да, с удовольствием</span>
+                                <span class="text-xs font-light text-gray-600 tracking-widest group-hover:text-gold-600 transition-colors">Да, с удовольствием приду</span>
                             </label>
                             <label class="flex items-center space-x-3 cursor-pointer group">
                                 <input type="radio" name="presence" value="no" class="w-4 h-4 accent-gold-500">
-                                <span class="text-xs font-light text-gray-600 tracking-wide group-hover:text-gold-600 transition-colors">К сожалению, не смогу</span>
+                                <span class="text-xs font-light text-gray-600 tracking-widest group-hover:text-gold-600 transition-colors">К сожалению, не смогу</span>
                             </label>
                         </div>
                     </div>
 
-                    <div id="additional-fields" class="space-y-8 transition-all duration-500">
+                    <div id="additional-fields" class="space-y-10 transition-all duration-500">
                         <div>
-                            <label for="guests" class="block text-[10px] font-medium tracking-[0.2em] text-gray-400 uppercase mb-2">Количество мест</label>
-                            <select id="guests" class="w-full bg-transparent border-b border-gold-300 focus:border-gold-600 outline-none py-3 text-xs font-light text-gray-600">
+                            <label for="guests" class="block text-[9px] font-medium tracking-[0.25em] text-gray-400 uppercase mb-2">Количество мест</label>
+                            <select id="guests" class="w-full bg-transparent border-b border-gold-300/60 focus:border-gold-600 outline-none py-3 text-xs font-light text-gray-600 tracking-wide">
                                 <option value="1">1 персона</option>
                                 <option value="2" selected>2 персоны</option>
                                 <option value="3+">3+ персоны</option>
@@ -302,8 +423,8 @@
                         </div>
 
                         <div>
-                            <label class="block text-[10px] font-medium tracking-[0.2em] text-gray-400 uppercase mb-4">Предпочтения по бару</label>
-                            <div class="grid grid-cols-2 gap-4 text-xs font-light text-gray-600 tracking-wide">
+                            <label class="block text-[9px] font-medium tracking-[0.25em] text-gray-400 uppercase mb-4">Предпочтения по бару</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-light text-gray-600 tracking-widest">
                                 <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" name="drinks" value="red-wine" class="accent-gold-500"> <span>Красное вино</span></label>
                                 <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" name="drinks" value="white-wine" class="accent-gold-500"> <span>Белое вино</span></label>
                                 <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" name="drinks" value="champagne" class="accent-gold-500"> <span>Игристое</span></label>
@@ -312,65 +433,64 @@
                         </div>
                     </div>
 
-                    <button type="submit" id="submit-btn" class="w-full bg-luxury-dark hover:bg-gold-500 text-gold-100 hover:text-luxury-dark font-sans text-[11px] tracking-[0.3em] uppercase py-4 rounded-none transition-all duration-500 border border-luxury-dark hover:border-gold-500 shadow-md">
+                    <button type="submit" id="submit-btn" class="w-full bg-luxury-dark hover:bg-gold-500 text-gold-100 hover:text-luxury-dark font-sans text-[10px] tracking-[0.4em] uppercase py-4 rounded-none transition-all duration-700 border border-luxury-dark hover:border-gold-500 shadow-xl transform hover:scale-[1.01]">
                         Отправить ответ
                     </button>
                 </form>
 
-                <div id="rsvp-success" class="hidden text-center py-12 space-y-5 relative z-10">
+                <div id="rsvp-success" class="hidden text-center py-12 space-y-6 relative z-10">
                     <div class="text-gold-500 text-4xl font-light"><i class="fa-regular fa-star"></i></div>
-                    <h3 class="font-cinzel text-xl tracking-widest text-luxury-dark">Ваш ответ принят</h3>
-                    <p class="text-xs font-light text-gray-500 max-w-sm mx-auto tracking-wide leading-relaxed">Благодарим вас! Информация успешно передана организаторам торжества.</p>
-                    <button id="reset-form" class="text-[10px] text-gold-600 uppercase tracking-widest hover:text-luxury-dark transition-colors pt-4 underline">Изменить выбор</button>
+                    <h3 class="font-cinzel text-xl tracking-widest text-luxury-dark uppercase">Ваш ответ принят</h3>
+                    <p class="text-xs font-light text-gray-500 max-w-sm mx-auto tracking-widest leading-relaxed">Благодарим вас! Информация успешно передана организаторам торжества.</p>
+                    <button id="reset-form" class="text-[9px] text-gold-600 uppercase tracking-[0.2em] hover:text-luxury-dark transition-colors pt-6 underline">Изменить выбор</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-16 bg-luxury-dark text-white text-center relative">
-        <span class="font-script text-5xl text-gold-200 block mb-4">A & E</span>
-        <p class="font-cinzel tracking-[0.3em] text-xs uppercase text-gold-100 text-opacity-80 mb-4">До встречи 12.09.2026</p>
+    <!-- Подвал -->
+    <footer class="py-20 bg-luxury-dark text-white text-center relative select-none">
+        <span class="font-script text-6xl text-gold-200 block mb-4">A & E</span>
+        <p class="font-cinzel tracking-[0.4em] text-[11px] uppercase text-gold-100 text-opacity-70 mb-6">До встречи 12.09.2026</p>
         
-        <!-- Авторские права, видимые на странице -->
-        <p class="text-[10px] font-sans tracking-[0.2em] text-gray-400 uppercase mb-2">
+        <p class="text-[9px] font-sans tracking-[0.25em] text-gray-500 uppercase mb-2">
             Автор работы: <span class="text-gold-300 font-medium">asyyaabeeb</span>
         </p>
-        <p class="text-[9px] font-sans tracking-[0.15em] text-gray-500 uppercase">
+        <p class="text-[8px] font-sans tracking-[0.2em] text-gray-600 uppercase">
             Данный веб-сайт разработан для портфолио автора. Копирование запрещено.
         </p>
     </footer>
 
     <script>
-        // 1. Плавный скролл-эффект появления блоков
+        // 1. Появление секций при скролле
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('is-visible');
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.05 });
 
         document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
 
-        // 2. Логика изменения стилей шапки при прокрутке страницы
+        // 2. Шапка при скролле
         const navbar = document.getElementById('navbar');
         const navLogo = document.getElementById('nav-logo');
-        const navLinks = document.getElementById('nav-links');
-        const menuBtn = document.getElementById('menu-btn');
 
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 80) {
-                navbar.classList.add('bg-luxury-dark', 'py-4', 'shadow-xl');
+            if (window.scrollY > 40) {
+                navbar.classList.add('bg-[#14110c]/85', 'backdrop-blur-xl', 'py-4', 'shadow-[0_10px_30px_rgba(0,0,0,0.3)]');
                 navbar.classList.remove('bg-transparent', 'py-6');
-                navLogo.className = 'font-cinzel text-xl tracking-[0.3em] font-medium text-gold-300 transition-all';
+                navLogo.className = 'font-cinzel text-xl tracking-[0.4em] font-medium text-gold-300 transition-all duration-500';
             } else {
-                navbar.classList.remove('bg-luxury-dark', 'py-4', 'shadow-xl');
+                navbar.classList.remove('bg-[#14110c]/85', 'backdrop-blur-xl', 'py-4', 'shadow-[0_10px_30px_rgba(0,0,0,0.3)]');
                 navbar.classList.add('bg-transparent', 'py-6');
-                navLogo.className = 'font-cinzel text-xl tracking-[0.3em] font-medium text-white transition-all';
+                navLogo.className = 'font-cinzel text-xl tracking-[0.4em] font-medium text-white transition-all duration-500';
             }
         });
 
-        // 3. Меню для мобильных устройств
+        // 3. Мобильное меню
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
+        const menuBtn = document.getElementById('menu-btn');
 
         menuBtn.addEventListener('click', () => {
             const isOpen = !mobileMenu.classList.contains('translate-x-full');
@@ -390,7 +510,7 @@
             });
         });
 
-        // 4. Таймер обратного отсчета до дня свадьбы
+        // 4. Таймер
         const weddingDate = new Date("Sep 12, 2026 15:30:00").getTime();
         const updateCountdown = () => {
             const now = new Date().getTime();
@@ -409,7 +529,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 5. Показ скрытых полей формы при согласии/отказе
+        // 5. RSVP форма
         const rsvpForm = document.getElementById('rsvp-form');
         const rsvpSuccess = document.getElementById('rsvp-success');
         const additionalFields = document.getElementById('additional-fields');
@@ -428,7 +548,85 @@
             });
         });
 
-        // ИНТЕГРАЦИЯ С НАСТРОЕННЫМ TELEGRAM-БОТОМ
+        // 6. Параллакс фона
+        const heroSection = document.getElementById('hero-section');
+        const heroBg = document.getElementById('hero-bg');
+        let mouseX = 0, mouseY = 0;
+        let currentX = 0, currentY = 0;
+
+        heroSection.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX - window.innerWidth / 2) / 45;
+            mouseY = (e.clientY - window.innerHeight / 2) / 45;
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+            mouseX = 0;
+            mouseY = 0;
+        });
+
+        function animateBg() {
+            currentX += (mouseX - currentX) * 0.08;
+            currentY += (mouseY - currentY) * 0.08;
+            heroBg.style.transform = `scale(1.08) translate(${currentX}px, ${currentY}px)`;
+            requestAnimationFrame(animateBg);
+        }
+        animateBg();
+
+        // 7. Золотая пыльца на холсте
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const numParticles = 55;
+        const particles = [];
+
+        for (let i = 0; i < numParticles; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                r: Math.random() * 1.5 + 0.5,
+                speedX: Math.random() * 0.3 - 0.15,
+                speedY: Math.random() * 0.5 + 0.15,
+                opacity: Math.random() * 0.5 + 0.15,
+                drift: Math.random() * 5
+            });
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = 0; i < numParticles; i++) {
+                const p = particles[i];
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(238, 223, 184, ${p.opacity})`;
+                
+                const finalX = p.x + (currentX * 0.4);
+                const finalY = p.y + (currentY * 0.3);
+
+                ctx.arc(finalX, finalY, p.r, 0, Math.PI * 2, true);
+                ctx.fill();
+
+                p.y += p.speedY;
+                p.x += p.speedX + Math.sin(p.drift) * 0.08;
+                p.drift += 0.005;
+
+                if (p.y > height) {
+                    p.y = -10;
+                    p.x = Math.random() * width;
+                }
+            }
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+
+        // Telegram интеграция
         const TELEGRAM_BOT_TOKEN = '8969393103:AAHY_FkXN5QuVGla5W--OCub4JMelmvLPy0'; 
         const TELEGRAM_CHAT_ID = '1736926061'; 
 
