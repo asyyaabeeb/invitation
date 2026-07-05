@@ -65,20 +65,20 @@
 
         /* Тонкие золотые градиенты для эффекта блеска */
         .gold-gradient-text {
-    background: linear-gradient(135deg, #b08d36 0%, #f7e0a3 50%, #c29d44 100%);
-    -webkit-background-clip: text;
-    background-clip: text; /* Добавили стандартную строку, чтобы убрать предупреждение */
-    -webkit-text-fill-color: transparent;
-}
+            background: linear-gradient(135deg, #b08d36 0%, #f7e0a3 50%, #c29d44 100%);
+            -webkit-background-clip: text;
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
 
         .gold-gradient-bg {
             background: linear-gradient(135deg, #c29d44 0%, #eedfb8 50%, #a38133 100%);
         }
 
-     .gold-border-glow {
-    border: 1px solid transparent;
-    border-image: linear-gradient(135deg, #c29d44, #f7e0a3) 1;
-}
+        .gold-border-glow {
+            border: 1px solid transparent;
+            border-image: linear-gradient(135deg, #c29d44, #f7e0a3) 1;
+        }
 
         /* Премиальный тонкий скроллбар */
         ::-webkit-scrollbar {
@@ -329,7 +329,15 @@
 
     <footer class="py-16 bg-luxury-dark text-white text-center relative">
         <span class="font-script text-5xl text-gold-200 block mb-4">A & E</span>
-        <p class="font-cinzel tracking-[0.3em] text-xs uppercase text-gold-100 text-opacity-80">До встречи 12.09.2026</p>
+        <p class="font-cinzel tracking-[0.3em] text-xs uppercase text-gold-100 text-opacity-80 mb-4">До встречи 12.09.2026</p>
+        
+        <!-- Авторские права, видимые на странице -->
+        <p class="text-[10px] font-sans tracking-[0.2em] text-gray-400 uppercase mb-2">
+            Автор работы: <span class="text-gold-300 font-medium">asyyaabeeb</span>
+        </p>
+        <p class="text-[9px] font-sans tracking-[0.15em] text-gray-500 uppercase">
+            Данный веб-сайт разработан для портфолио автора. Копирование запрещено.
+        </p>
     </footer>
 
     <script>
