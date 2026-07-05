@@ -3,494 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Александр & Елизавета — Свадебное приглашение</title>
-    
+    <title>Пекарня & Кондитерская | Тёплая выпечка</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500&family=Cinzel:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        gold: {
-                            50: '#fdfbf7',
-                            100: '#f7f2e8',
-                            200: '#eedfb8',
-                            300: '#e2ca8b',
-                            400: '#d5b360',
-                            500: '#c29d44', // Основное благородное золото
-                            600: '#a38133',
-                            700: '#7e6124',
-                        },
-                        luxury: {
-                            white: '#ffffff',
-                            cream: '#faf8f5', // Нежный кремовый фон
-                            dark: '#1c1710',  // Мягкий черный для текста с золотым отливом
-                            sand: '#f2eae1'
+                        bakery: {
+                            bg: '#FAF6F0',       
+                            paper: '#FFFFFF',    
+                            accent: '#D4A373',   
+                            accentHover: '#BB8A5A',
+                            dark: '#4A3728',     
+                            lightBg: '#F3EDE4'   
                         }
                     },
                     fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
                         sans: ['"Montserrat"', 'sans-serif'],
-                        script: ['"Pinyon Script"', 'cursive'],
-                        cinzel: ['"Cinzel"', 'serif']
+                        cozy: ['"Comfortaa"', 'cursive']
                     }
                 }
             }
         }
     </script>
-
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Плавное проявление элегантных блоков */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1.2s cubic-bezier(0.215, 0.610, 0.355, 1), transform 1.2s cubic-bezier(0.215, 0.610, 0.355, 1);
-        }
-        
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Тонкие золотые градиенты для эффекта блеска */
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #b08d36 0%, #f7e0a3 50%, #c29d44 100%);
-            -webkit-background-clip: text;
-            background-clip: text; 
-            -webkit-text-fill-color: transparent;
-        }
-
-        .gold-gradient-bg {
-            background: linear-gradient(135deg, #c29d44 0%, #eedfb8 50%, #a38133 100%);
-        }
-
-        .gold-border-glow {
-            border: 1px solid transparent;
-            border-image: linear-gradient(135deg, #c29d44, #f7e0a3) 1;
-        }
-
-        /* Премиальный тонкий скроллбар */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #faf8f5;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #c29d44;
-            border-radius: 3px;
-        }
+        html { scroll-behavior: smooth; }
+        .cozy-shadow { box-shadow: 0 10px 30px -10px rgba(74, 55, 40, 0.08); }
+        .cozy-shadow-hover { transition: all 0.4s ease; }
+        .cozy-shadow-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -15px rgba(74, 55, 40, 0.15); }
     </style>
 </head>
-<body class="bg-luxury-cream font-sans text-luxury-dark leading-relaxed overflow-x-hidden">
+<body class="bg-bakery-bg text-bakery-dark font-sans antialiased">
 
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-6 px-8 flex justify-between items-center bg-transparent">
-        <a href="#" class="font-cinzel text-xl tracking-[0.3em] font-medium transition-colors duration-500 text-white" id="nav-logo">A & E</a>
-        
-        <button id="menu-btn" class="md:hidden text-white focus:outline-none z-50 transition-colors">
-            <i class="fa-solid fa-bars-staggered text-xl" id="menu-icon"></i>
-        </button>
-
-        <ul id="nav-links" class="hidden md:flex space-x-10 font-sans text-[10px] tracking-[0.4em] uppercase text-white font-light">
-            <li><a href="#about" class="hover:text-gold-300 transition-colors duration-300">Наша история</a></li>
-            <li><a href="#schedule" class="hover:text-gold-300 transition-colors duration-300">Программа</a></li>
-            <li><a href="#details" class="hover:text-gold-300 transition-colors duration-300">Детали</a></li>
-            <li><a href="#rsvp" class="hover:text-gold-300 transition-colors duration-300">RSVP</a></li>
-        </ul>
-
-        <div id="mobile-menu" class="fixed inset-0 bg-luxury-dark bg-opacity-98 z-40 flex flex-col justify-center items-center space-y-10 transform translate-x-full transition-transform duration-500 ease-in-out">
-            <ul class="text-center space-y-8 font-serif text-3xl tracking-[0.2em] text-gold-100 font-light">
-                <li><a href="#about" class="mobile-link hover:text-gold-300 transition-colors">Наша история</a></li>
-                <li><a href="#schedule" class="mobile-link hover:text-gold-300 transition-colors">Программа</a></li>
-                <li><a href="#details" class="mobile-link hover:text-gold-300 transition-colors">Детали</a></li>
-                <li><a href="#rsvp" class="mobile-link hover:text-gold-300 transition-colors">RSVP</a></li>
-            </ul>
+    <!-- Шапка сайта -->
+    <nav class="flex justify-between items-center px-6 md:px-12 py-5 bg-bakery-bg/90 backdrop-blur-md fixed w-full z-50 border-b border-bakery-lightBg shadow-sm">
+        <div class="flex items-center space-x-2">
+            <i class="fa-solid fa-croissant text-bakery-accent text-2xl animate-pulse"></i>
+            <span class="font-cozy text-xl font-bold tracking-tight text-bakery-dark">Хлеб & Корица</span>
+        </div>
+        <div class="space-x-8 text-xs font-semibold uppercase tracking-wider hidden md:block">
+            <a href="#about" class="hover:text-bakery-accent transition">О нас</a>
+            <a href="#menu" class="hover:text-bakery-accent transition">Выпечка</a>
+            <a href="#order" class="hover:text-bakery-accent transition">Заказать</a>
         </div>
     </nav>
 
-    <section class="relative h-screen flex items-center justify-center bg-cover bg-center bg-fixed" style="background-image: linear-gradient(rgba(24, 20, 15, 0.5), rgba(24, 20, 15, 0.5)), url('http://googleusercontent.com/image_collection/image_retrieval/10755680290865288171_0');">
-        <div class="absolute inset-0 border-[16px] md:border-[24px] border-luxury-dark border-opacity-20 pointer-events-none z-10"></div>
-        <div class="absolute inset-4 md:inset-6 border border-gold-300 border-opacity-30 pointer-events-none z-10"></div>
+    <!-- Главный экран -->
+    <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-20 relative bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(250, 246, 240, 0.85), rgba(250, 246, 240, 0.95)), url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80');">
+        <div class="max-w-2xl space-y-6">
+            <span class="inline-block bg-bakery-accent/10 text-bakery-accent px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest">Каждое утро из печи</span>
+            <h1 class="font-cozy text-4xl md:text-6xl font-bold leading-tight">Ароматный хлеб и домашняя выпечка</h1>
+            <p class="text-sm md:text-base text-gray-600 font-light max-w-lg mx-auto">Мы выпекаем ремесленный хлеб на закваске и нежнейшие слоеные круассаны по классическим французским рецептам.</p>
+            <div class="pt-4">
+                <a href="#menu" class="bg-bakery-accent text-white font-medium text-sm px-8 py-4 rounded-xl hover:bg-bakery-accentHover transition shadow-md inline-block">Вкусить аромат</a>
+            </div>
+        </div>
+    </header>
 
-        <div class="text-center text-white px-4 z-20">
-            <span class="block font-script text-6xl md:text-8xl text-gold-200 mb-6 drop-shadow-md">Save the Date</span>
-            <h1 class="font-cinzel text-3xl md:text-6xl tracking-[0.25em] font-light mb-8">Александр <br class="md:hidden"><span class="font-script text-4xl md:text-6xl lowercase text-gold-200 tracking-normal mx-2">and</span> Елизавета</h1>
-            <div class="w-24 h-[1px] bg-gold-300 mx-auto mb-8"></div>
-            <p class="font-sans text-xs md:text-sm tracking-[0.4em] uppercase text-gold-100 mb-12">12 сентября 2026 • Начало в 15:30</p>
-            
-            <a href="#rsvp" class="inline-block border border-gold-300 bg-transparent hover:bg-gold-500 hover:border-gold-500 hover:text-luxury-dark text-gold-200 font-sans text-[11px] tracking-[0.3em] uppercase py-4 px-10 rounded-none transition-all duration-500 backdrop-blur-sm shadow-lg">
-                Подтвердить присутствие
-            </a>
+    <!-- Коротко о главном -->
+    <section id="about" class="py-20 px-6 max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+        <div class="p-6 bg-bakery-paper rounded-2xl cozy-shadow">
+            <div class="w-12 h-12 bg-bakery-bg rounded-full flex items-center justify-center mx-auto mb-4 text-bakery-accent text-xl"><i class="fa-solid fa-wheat-awn"></i></div>
+            <h3 class="font-cozy font-bold text-lg mb-2">100% Натурально</h3>
+            <p class="text-xs text-gray-500 font-light">Только отборная фермерская мука, натуральное масло и никакой химии.</p>
+        </div>
+        <div class="p-6 bg-bakery-paper rounded-2xl cozy-shadow">
+            <div class="w-12 h-12 bg-bakery-bg rounded-full flex items-center justify-center mx-auto mb-4 text-bakery-accent text-xl"><i class="fa-solid fa-fire-burner"></i></div>
+            <h3 class="font-cozy font-bold text-lg mb-2">Живая закваска</h3>
+            <p class="text-xs text-gray-500 font-light">Наш хлеб созревает более 24 часов, приобретая неповторимый вкус и хруст.</p>
+        </div>
+        <div class="p-6 bg-bakery-paper rounded-2xl cozy-shadow">
+            <div class="w-12 h-12 bg-bakery-bg rounded-full flex items-center justify-center mx-auto mb-4 text-bakery-accent text-xl"><i class="fa-solid fa-truck-ramp-box"></i></div>
+            <h3 class="font-cozy font-bold text-lg mb-2">Горячая доставка</h3>
+            <p class="text-xs text-gray-500 font-light">Привезем выпечку еще теплой прямо к вашему завтраку.</p>
+        </div>
+    </section>
+
+    <!-- Витрина / Меню -->
+    <section id="menu" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="text-center space-y-3 mb-16">
+            <h2 class="font-cozy text-3xl md:text-4xl font-bold">Свежая витрина</h2>
+            <p class="text-xs text-gray-500 uppercase tracking-widest">Выберите то, что порадует вас сегодня</p>
         </div>
         
-        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-gold-200 text-opacity-80 z-20 animate-pulse">
-            <a href="#about" class="flex flex-col items-center">
-                <i class="fa-solid fa-chevron-down font-light text-sm tracking-widest"></i>
-            </a>
-        </div>
-    </section>
-
-    <section class="py-16 bg-luxury-white border-b border-gold-100 relative">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <span class="block font-serif italic text-lg text-gold-600 mb-4">До торжества осталось</span>
-            <div class="flex justify-center items-center space-x-3 md:space-x-8">
-                <div class="bg-luxury-cream p-4 md:p-6 w-24 md:w-32 border border-gold-200 border-opacity-40">
-                    <span id="days" class="block font-cinzel text-2xl md:text-4xl text-luxury-dark font-light">00</span>
-                    <span class="text-[9px] tracking-[0.2em] uppercase text-gray-400 mt-1 block">Дней</span>
-                </div>
-                <div class="bg-luxury-cream p-4 md:p-6 w-24 md:w-32 border border-gold-200 border-opacity-40">
-                    <span id="hours" class="block font-cinzel text-2xl md:text-4xl text-luxury-dark font-light">00</span>
-                    <span class="text-[9px] tracking-[0.2em] uppercase text-gray-400 mt-1 block">Часов</span>
-                </div>
-                <div class="bg-luxury-cream p-4 md:p-6 w-24 md:w-32 border border-gold-200 border-opacity-40">
-                    <span id="minutes" class="block font-cinzel text-2xl md:text-4xl text-luxury-dark font-light">00</span>
-                    <span class="text-[9px] tracking-[0.2em] uppercase text-gray-400 mt-1 block">Минут</span>
-                </div>
-                <div class="bg-luxury-cream p-4 md:p-6 w-24 md:w-32 border border-gold-200 border-opacity-40">
-                    <span id="seconds" class="block font-cinzel text-2xl md:text-4xl text-luxury-dark font-light">00</span>
-                    <span class="text-[9px] tracking-[0.2em] uppercase text-gray-400 mt-1 block">Секунд</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-32 fade-in-section max-w-5xl mx-auto px-6">
-        <div class="grid md:grid-cols-12 gap-12 items-center">
-            <div class="md:col-span-5 order-2 md:order-1 relative flex justify-center items-center">
-                <div class="relative w-full max-w-[360px] aspect-[4/5] p-3">
-                    <div class="absolute inset-0 border border-gold-400 transform translate-x-3 translate-y-3 pointer-events-none"></div>
-                    <div class="absolute inset-0 bg-white shadow-xl overflow-hidden p-0">
-                        <img src="https://i.pinimg.com/474x/85/32/a9/8532a90c91dc7bbb1d44111b0f7d621a.jpg?nii=t" alt="История любви" class="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-700 ease-in-out">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="md:col-span-7 order-1 md:order-2 space-y-6 md:pl-8">
-                <span class="block font-script text-5xl text-gold-500">The Story of Us</span>
-                <h2 class="font-cinzel text-2xl md:text-4xl tracking-wider font-light">Как всё начиналось</h2>
-                <div class="w-20 h-[1px] bg-gold-400"></div>
-                <p class="font-serif text-lg font-light text-gray-600 italic leading-relaxed">
-                    Наша история началась теплым осенним вечером. Казалось бы, обычная встреча в кофейне переросла в многочасовые прогулки и бесконечные разговоры под звездами. С тех пор мы не расставались ни на один день.
-                </p>
-                <p class="font-sans text-xs font-light text-gray-500 tracking-wide leading-relaxed">
-                    Спустя три года, в самом сердце заснеженных гор, прозвучало самое заветное «Да!». И сегодня мы невероятно счастливы пригласить вас разделить с нами начало нашего нового совместного путешествия длиною в жизнь.
-                </p>
-                <div class="pt-6 font-script text-4xl text-gold-600">
-                    Александр & Елизавета
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="schedule" class="py-32 bg-luxury-white border-t border-b border-gold-100 fade-in-section">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="text-center space-y-4 mb-20">
-                <span class="block font-script text-5xl text-gold-500">Wedding Timeline</span>
-                <h2 class="font-cinzel text-2xl md:text-3xl tracking-[0.2em] font-light uppercase">Программа дня</h2>
-                <div class="w-16 h-[1px] bg-gold-400 mx-auto"></div>
-            </div>
-
-            <div class="relative border-l border-gold-300 mx-auto max-w-xl pl-10 space-y-16">
-                <div class="relative">
-                    <div class="absolute -left-[46px] top-1 w-3 h-3 rounded-full bg-gold-500 ring-4 ring-luxury-white"></div>
-                    <span class="block font-cinzel text-gold-600 text-sm tracking-widest font-semibold">15:30</span>
-                    <h3 class="font-serif text-2xl font-light tracking-wide mt-1 text-luxury-dark">Сбор гостей</h3>
-                    <p class="font-sans text-xs font-light text-gray-500 mt-2 tracking-wide">Приветственные изысканные коктейли, легкая живая музыка и атмосфера предвкушения праздника.</p>
-                </div>
-
-                <div class="relative">
-                    <div class="absolute -left-[46px] top-1 w-3 h-3 rounded-full bg-gold-500 ring-4 ring-luxury-white"></div>
-                    <span class="block font-cinzel text-gold-600 text-sm tracking-widest font-semibold">16:00</span>
-                    <h3 class="font-serif text-2xl font-light tracking-wide mt-1 text-luxury-dark">Выездная церемония</h3>
-                    <p class="font-sans text-xs font-light text-gray-500 mt-2 tracking-wide">Самый важный и трогательный момент нашего дня. Обмен клятвами верности на берегу живописного озера.</p>
-                </div>
-
-                <div class="relative">
-                    <div class="absolute -left-[46px] top-1 w-3 h-3 rounded-full bg-gold-500 ring-4 ring-luxury-white"></div>
-                    <span class="block font-cinzel text-gold-600 text-sm tracking-widest font-semibold">17:00</span>
-                    <h3 class="font-serif text-2xl font-light tracking-wide mt-1 text-luxury-dark">Гранд-ужин</h3>
-                    <p class="font-sans text-xs font-light text-gray-500 mt-2 tracking-wide">Высокая кухня, искренние поздравления близких, первый танец и начало роскошного вечера.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="details" class="py-32 fade-in-section max-w-6xl mx-auto px-6">
-        <div class="text-center space-y-4 mb-20">
-            <span class="block font-script text-5xl text-gold-500">Wedding Details</span>
-            <h2 class="font-cinzel text-2xl md:text-3xl tracking-[0.2em] font-light uppercase">Детали торжества</h2>
-            <div class="w-16 h-[1px] bg-gold-400 mx-auto"></div>
-        </div>
-
         <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-luxury-white p-10 border border-gold-200 border-opacity-40 text-center space-y-5 shadow-sm">
-                <div class="text-gold-500 text-2xl font-light"><i class="fa-solid fa-gem"></i></div>
-                <h3 class="font-cinzel text-lg tracking-widest font-light">Дресс-код</h3>
-                <p class="font-sans text-xs font-light text-gray-500 tracking-wide leading-relaxed">Мы будем признательны, если вы разделите элегантную палитру нашего праздника в светлых и пастельных тонах:</p>
-                <div class="flex justify-center space-x-3 pt-2">
-                    <span class="w-5 h-5 rounded-full bg-[#fcfaf5] border border-gold-200 block shadow-inner"></span>
-                    <span class="w-5 h-5 rounded-full bg-[#f4ebd9] border border-gold-200 block shadow-inner"></span>
-                    <span class="w-5 h-5 rounded-full bg-[#eedfb8] border border-gold-200 block shadow-inner"></span>
-                    <span class="w-5 h-5 rounded-full bg-[#dfd6c6] border border-gold-200 block shadow-inner"></span>
+            <!-- Элемент 1 -->
+            <div class="bg-bakery-paper rounded-2xl overflow-hidden cozy-shadow cozy-shadow-hover">
+                <div class="h-60 bg-gray-200 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+                    <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-bakery-dark text-xs px-3 py-1 rounded-full font-semibold">Хит</span>
+                </div>
+                <div class="p-6 space-y-3">
+                    <h3 class="font-cozy font-bold text-xl">Круассан классический</h3>
+                    <p class="text-xs text-gray-500 font-light">Воздушное слоеное тесто на настоящем сливочном масле из Нормандии.</p>
+                    <div class="flex justify-between items-center pt-2">
+                        <span class="text-lg font-bold text-bakery-accent">190 ₽</span>
+                        <a href="#order" class="text-xs font-semibold text-bakery-dark hover:text-bakery-accent transition">Заказать <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i></a>
+                    </div>
                 </div>
             </div>
 
-            <div class="bg-luxury-white p-10 border border-gold-200 border-opacity-40 text-center space-y-5 shadow-sm">
-                <div class="text-gold-500 text-2xl font-light"><i class="fa-solid fa-envelope-open-text"></i></div>
-                <h3 class="font-cinzel text-lg tracking-widest font-light">Пожелания</h3>
-                <p class="font-sans text-xs font-light text-gray-500 tracking-wide leading-relaxed">Главное для нас — ваше присутствие. Но если вы захотите сделать подарок, мы будем рады вашим пожеланиям в элегантных конвертах.</p>
-            </div>
-
-            <div class="bg-luxury-white p-10 border border-gold-200 border-opacity-40 text-center space-y-5 shadow-sm">
-                <div class="text-gold-500 text-2xl font-light"><i class="fa-solid fa-map-pin"></i></div>
-                <h3 class="font-cinzel text-lg tracking-widest font-light">Локация</h3>
-                <p class="font-sans text-xs font-light text-gray-500 tracking-wide leading-relaxed">Праздник состоится в премиальном загородном комплексе «Усадьба у озера». Для вашего комфорта будет организован трансфер.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="rsvp" class="py-32 bg-luxury-white border-t border-gold-200 border-opacity-50 fade-in-section">
-        <div class="max-w-2xl mx-auto px-4">
-            <div class="bg-luxury-cream p-8 md:p-16 border border-gold-300 border-opacity-60 shadow-xl relative">
-                <div class="absolute inset-2 border border-gold-200 border-opacity-30 pointer-events-none"></div>
-                
-                <div class="text-center space-y-4 mb-10 relative z-10">
-                    <span class="block font-script text-5xl text-gold-500">RSVP</span>
-                    <h2 class="font-cinzel text-2xl md:text-3xl tracking-[0.15em] font-light text-luxury-dark uppercase">Регистрация гостей</h2>
-                    <div class="w-16 h-[1px] bg-gold-400 mx-auto"></div>
+            <!-- Элемент 2 -->
+            <div class="bg-bakery-paper rounded-2xl overflow-hidden cozy-shadow cozy-shadow-hover">
+                <div class="h-60 bg-gray-200 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
                 </div>
-
-                <form id="rsvp-form" class="space-y-8 relative z-10">
-                    <div>
-                        <label for="name" class="block text-[10px] font-medium tracking-[0.2em] text-gray-400 uppercase mb-2">Ваше Имя и Фамилия</label>
-                        <input type="text" id="name" required class="w-full bg-transparent border-b border-gold-300 focus:border-gold-600 outline-none py-3 text-sm transition-colors text-luxury-dark placeholder-gray-300 font-light" placeholder="Анастасия">
+                <div class="p-6 space-y-3">
+                    <h3 class="font-cozy font-bold text-xl">Тартин на закваске</h3>
+                    <p class="text-xs text-gray-500 font-light">Ремесленный пшеничный хлеб с крупными порами и хрустящей глянцевой корочкой.</p>
+                    <div class="flex justify-between items-center pt-2">
+                        <span class="text-lg font-bold text-bakery-accent">260 ₽</span>
+                        <a href="#order" class="text-xs font-semibold text-bakery-dark hover:text-bakery-accent transition">Заказать <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i></a>
                     </div>
+                </div>
+            </div>
 
-                    <div>
-                        <label class="block text-[10px] font-medium tracking-[0.2em] text-gray-400 uppercase mb-4">Планируете ли вы присутствовать?</label>
-                        <div class="flex space-x-8">
-                            <label class="flex items-center space-x-3 cursor-pointer group">
-                                <input type="radio" name="presence" value="yes" checked class="w-4 h-4 accent-gold-500">
-                                <span class="text-xs font-light text-gray-600 tracking-wide group-hover:text-gold-600 transition-colors">Да, с удовольствием</span>
-                            </label>
-                            <label class="flex items-center space-x-3 cursor-pointer group">
-                                <input type="radio" name="presence" value="no" class="w-4 h-4 accent-gold-500">
-                                <span class="text-xs font-light text-gray-600 tracking-wide group-hover:text-gold-600 transition-colors">К сожалению, не смогу</span>
-                            </label>
-                        </div>
+            <!-- Элемент 3 -->
+            <div class="bg-bakery-paper rounded-2xl overflow-hidden cozy-shadow cozy-shadow-hover">
+                <div class="h-60 bg-gray-200 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 space-y-3">
+                    <h3 class="font-cozy font-bold text-xl">Улитка с корицей</h3>
+                    <p class="text-xs text-gray-500 font-light">Сладкая, ароматная булочка, щедро посыпанная цейлонской корицей и тростниковым сахаром.</p>
+                    <div class="flex justify-between items-center pt-2">
+                        <span class="text-lg font-bold text-bakery-accent">160 ₽</span>
+                        <a href="#order" class="text-xs font-semibold text-bakery-dark hover:text-bakery-accent transition">Заказать <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i></a>
                     </div>
-
-                    <div id="additional-fields" class="space-y-8 transition-all duration-500">
-                        <div>
-                            <label for="guests" class="block text-[10px] font-medium tracking-[0.2em] text-gray-400 uppercase mb-2">Количество мест</label>
-                            <select id="guests" class="w-full bg-transparent border-b border-gold-300 focus:border-gold-600 outline-none py-3 text-xs font-light text-gray-600">
-                                <option value="1">1 персона</option>
-                                <option value="2" selected>2 персоны</option>
-                                <option value="3+">3+ персоны</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label class="block text-[10px] font-medium tracking-[0.2em] text-gray-400 uppercase mb-4">Предпочтения по бару</label>
-                            <div class="grid grid-cols-2 gap-4 text-xs font-light text-gray-600 tracking-wide">
-                                <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" name="drinks" value="red-wine" class="accent-gold-500"> <span>Красное вино</span></label>
-                                <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" name="drinks" value="white-wine" class="accent-gold-500"> <span>Белое вино</span></label>
-                                <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" name="drinks" value="champagne" class="accent-gold-500"> <span>Игристое</span></label>
-                                <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" name="drinks" value="non-alcoholic" class="accent-gold-500"> <span>Без алкоголя</span></label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" id="submit-btn" class="w-full bg-luxury-dark hover:bg-gold-500 text-gold-100 hover:text-luxury-dark font-sans text-[11px] tracking-[0.3em] uppercase py-4 rounded-none transition-all duration-500 border border-luxury-dark hover:border-gold-500 shadow-md">
-                        Отправить ответ
-                    </button>
-                </form>
-
-                <div id="rsvp-success" class="hidden text-center py-12 space-y-5 relative z-10">
-                    <div class="text-gold-500 text-4xl font-light"><i class="fa-regular fa-star"></i></div>
-                    <h3 class="font-cinzel text-xl tracking-widest text-luxury-dark">Ваш ответ принят</h3>
-                    <p class="text-xs font-light text-gray-500 max-w-sm mx-auto tracking-wide leading-relaxed">Благодарим вас! Информация успешно передана организаторам торжества.</p>
-                    <button id="reset-form" class="text-[10px] text-gold-600 uppercase tracking-widest hover:text-luxury-dark transition-colors pt-4 underline">Изменить выбор</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-16 bg-luxury-dark text-white text-center relative">
-        <span class="font-script text-5xl text-gold-200 block mb-4">A & E</span>
-        <p class="font-cinzel tracking-[0.3em] text-xs uppercase text-gold-100 text-opacity-80 mb-4">До встречи 12.09.2026</p>
+    <!-- Заказ -->
+    <section id="order" class="py-20 bg-bakery-lightBg px-6">
+        <div class="max-w-xl mx-auto bg-bakery-paper rounded-3xl p-8 md:p-12 cozy-shadow relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-2 bg-bakery-accent"></div>
+            
+            <div class="text-center space-y-3 mb-10">
+                <h2 class="font-cozy text-3xl font-bold">Собрать корзину</h2>
+                <p class="text-xs text-gray-400 font-light">Мы испечем ваш заказ индивидуально к нужному времени</p>
+            </div>
+
+            <form id="bakery-form" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Ваше имя</label>
+                    <input type="text" id="name" required class="w-full bg-bakery-bg rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-bakery-accent/30 text-bakery-dark" placeholder="Александр">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Что испечь?</label>
+                    <select id="product" class="w-full bg-bakery-bg rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-bakery-accent/30 text-bakery-dark">
+                        <option value="Классический круассан">Классический круассан (190 ₽)</option>
+                        <option value="Ремесленный Тартин">Ремесленный Тартин (260 ₽)</option>
+                        <option value="Улитка с корицей">Улитка с корицей (160 ₽)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Телефон для связи</label>
+                    <input type="tel" id="phone" required class="w-full bg-bakery-bg rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-bakery-accent/30 text-bakery-dark" placeholder="+7 (999) 000-00-00">
+                </div>
+
+                <button type="submit" id="submit-btn" class="w-full bg-bakery-dark hover:bg-bakery-accent text-white font-medium text-sm py-4 rounded-xl transition duration-300 shadow-md uppercase tracking-wider">
+                    Отправить заказ в печь
+                </button>
+            </form>
+
+            <div id="success-msg" class="hidden text-center py-12 space-y-4">
+                <div class="w-16 h-16 bg-bakery-bg rounded-full flex items-center justify-center mx-auto text-bakery-accent text-2xl"><i class="fa-solid fa-fire"></i></div>
+                <h3 class="font-cozy font-bold text-2xl">Заказ принят!</h3>
+                <p class="text-xs text-gray-500 max-w-xs mx-auto">Уже разогреваем печи. Пекарь свяжется с вами в течение 10 минут для подтверждения.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал / Авторство -->
+    <footer class="py-12 bg-bakery-dark text-bakery-bg text-center space-y-4">
+        <div class="flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-cookie-bite text-bakery-accent text-lg"></i>
+            <span class="font-cozy font-bold tracking-tight">Хлеб & Корица</span>
+        </div>
+        <p class="text-[11px] text-gray-400 uppercase tracking-widest">© 2026 Все права защищены</p>
+        <div class="w-12 h-[1px] bg-bakery-accent/30 mx-auto"></div>
         
-        <!-- Авторские права, видимые на странице -->
-        <p class="text-[10px] font-sans tracking-[0.2em] text-gray-400 uppercase mb-2">
-            Автор работы: <span class="text-gold-300 font-medium">asyyaabeeb</span>
+        <!-- Авторский копирайт -->
+        <p class="text-[10px] font-sans tracking-widest text-gray-500 uppercase">
+            Дизайн и разработка: <span class="text-bakery-accent font-semibold">asyyaabeeb</span>
         </p>
-        <p class="text-[9px] font-sans tracking-[0.15em] text-gray-500 uppercase">
-            Данный веб-сайт разработан для портфолио автора. Копирование запрещено.
+        <p class="text-[9px] font-sans tracking-wider text-gray-600 uppercase">
+            Сайт создан для портфолио автора. Копирование структуры кода защищено.
         </p>
     </footer>
 
     <script>
-        // 1. Плавный скролл-эффект появления блоков
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('is-visible');
-            });
-        }, { threshold: 0.1 });
+        // Твой ID уже на месте, осталось вставить токен созданного бота ниже
+        const TELEGRAM_BOT_TOKEN = '8907155384:AAGG9zN9bS7NboQ8jfCQqxf7an_lUMwDSzs'; 
+        const TELEGRAM_CHAT_ID = '1736926061';
 
-        document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+        const form = document.getElementById('bakery-form');
+        const successMsg = document.getElementById('success-msg');
 
-        // 2. Логика изменения стилей шапки при прокрутке страницы
-        const navbar = document.getElementById('navbar');
-        const navLogo = document.getElementById('nav-logo');
-        const navLinks = document.getElementById('nav-links');
-        const menuBtn = document.getElementById('menu-btn');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 80) {
-                navbar.classList.add('bg-luxury-dark', 'py-4', 'shadow-xl');
-                navbar.classList.remove('bg-transparent', 'py-6');
-                navLogo.className = 'font-cinzel text-xl tracking-[0.3em] font-medium text-gold-300 transition-all';
-            } else {
-                navbar.classList.remove('bg-luxury-dark', 'py-4', 'shadow-xl');
-                navbar.classList.add('bg-transparent', 'py-6');
-                navLogo.className = 'font-cinzel text-xl tracking-[0.3em] font-medium text-white transition-all';
-            }
-        });
-
-        // 3. Меню для мобильных устройств
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-
-        menuBtn.addEventListener('click', () => {
-            const isOpen = !mobileMenu.classList.contains('translate-x-full');
-            if (isOpen) {
-                mobileMenu.classList.add('translate-x-full');
-                menuIcon.className = 'fa-solid fa-bars-staggered text-xl';
-            } else {
-                mobileMenu.classList.remove('translate-x-full');
-                menuIcon.className = 'fa-solid fa-xmark text-xl text-gold-300';
-            }
-        });
-
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('translate-x-full');
-                menuIcon.className = 'fa-solid fa-bars-staggered text-xl';
-            });
-        });
-
-        // 4. Таймер обратного отсчета до дня свадьбы
-        const weddingDate = new Date("Sep 12, 2026 15:30:00").getTime();
-        const updateCountdown = () => {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = days < 10 ? '0' + days : days;
-            document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
-            document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
-            document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
-        };
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        // 5. Показ скрытых полей формы при согласии/отказе
-        const rsvpForm = document.getElementById('rsvp-form');
-        const rsvpSuccess = document.getElementById('rsvp-success');
-        const additionalFields = document.getElementById('additional-fields');
-        const presenceRadios = document.getElementsByName('presence');
-        const resetBtn = document.getElementById('reset-form');
-
-        presenceRadios.forEach(radio => {
-            radio.addEventListener('change', (e) => {
-                if (e.target.value === 'no') {
-                    additionalFields.style.opacity = '0';
-                    setTimeout(() => additionalFields.classList.add('hidden'), 300);
-                } else {
-                    additionalFields.classList.remove('hidden');
-                    setTimeout(() => additionalFields.style.opacity = '1', 50);
-                }
-            });
-        });
-
-        // ИНТЕГРАЦИЯ С НАСТРОЕННЫМ TELEGRAM-БОТОМ
-        const TELEGRAM_BOT_TOKEN = '8969393103:AAHY_FkXN5QuVGla5W--OCub4JMelmvLPy0'; 
-        const TELEGRAM_CHAT_ID = '1736926061'; 
-
-        rsvpForm.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            const submitBtn = document.getElementById('submit-btn');
-            submitBtn.innerHTML = '<i class="fa-solid fa-compass-drafting animate-spin text-sm"></i>';
-            submitBtn.disabled = true;
+            const btn = document.getElementById('submit-btn');
+            btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin mr-2"></i> Отправка...';
+            btn.disabled = true;
 
             const name = document.getElementById('name').value;
-            const presenceValue = document.querySelector('input[name="presence"]:checked').value;
-            const presence = presenceValue === 'yes' ? '✅ Да, с удовольствием приду' : '❌ К сожалению, не смогу';
-            const guests = document.getElementById('guests').value;
-            
-            const checkedDrinks = Array.from(document.querySelectorAll('input[name="drinks"]:checked'))
-                .map(el => el.nextElementSibling.innerText);
-            const drinks = checkedDrinks.length > 0 ? checkedDrinks.join(', ') : 'Не выбрано';
+            const product = document.getElementById('product').value;
+            const phone = document.getElementById('phone').value;
 
-            let message = `🔔 <b>Новый ответ RSVP!</b>\n\n`;
-            message += `👤 <b>Имя гостя:</b> ${name}\n`;
-            message += `❓ <b>Присутствие:</b> ${presence}\n`;
-            
-            if (presenceValue === 'yes') {
-                message += `👥 <b>Количество мест:</b> ${guests}\n`;
-                message += `🥂 <b>Предпочтения по бару:</b> ${drinks}\n`;
-            }
+            const message = `🥖 <b>Новый заказ с витрины!</b>\n\n👤 <b>Покупатель:</b> ${name}\n🥐 <b>Выпечка:</b> ${product}\n📞 <b>Телефон:</b> ${phone}`;
 
-            fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: TELEGRAM_CHAT_ID,
-                    text: message,
-                    parse_mode: 'HTML'
-                })
-            })
-            .then(response => {
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+
                 if (response.ok) {
-                    rsvpForm.classList.add('hidden');
-                    rsvpSuccess.classList.remove('hidden');
+                    form.classList.add('hidden');
+                    successMsg.classList.remove('hidden');
                 } else {
-                    alert('Ошибка отправки. Проверьте соединение.');
-                    submitBtn.innerHTML = 'Отправить ответ';
-                    submitBtn.disabled = false;
+                    alert('Произошла ошибка при отправке. Проверьте настройки бота.');
+                    btn.innerHTML = 'Отправить заказ в печь';
+                    btn.disabled = false;
                 }
-            })
-            .catch(() => {
+            } catch (error) {
                 alert('Ошибка сети.');
-                submitBtn.innerHTML = 'Отправить ответ';
-                submitBtn.disabled = false;
-            });
-        });
-
-        resetBtn.addEventListener('click', () => {
-            rsvpSuccess.classList.add('hidden');
-            rsvpForm.classList.remove('hidden');
-            document.getElementById('submit-btn').innerHTML = 'Отправить ответ';
-            document.getElementById('submit-btn').disabled = false;
-            rsvpForm.reset();
-            additionalFields.classList.remove('hidden');
-            additionalFields.style.opacity = '1';
+                btn.innerHTML = 'Отправить заказ в печь';
+                btn.disabled = false;
+            }
         });
     </script>
 </body>
